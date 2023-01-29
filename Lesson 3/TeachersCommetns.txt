@@ -1,0 +1,10 @@
+Well done!
+
+2
+a)-0.25
+NULL can't be compared with "="!
+
+c)
+ORDER BY is not needed.
+
+Mark: 10
