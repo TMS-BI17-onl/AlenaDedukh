@@ -1,0 +1,73 @@
+--Task 1
+
+SELECT Person.Person.FirstName,  Person.Person.LastName, Person.PersonPhone.PhoneNumber
+FROM Person.Person
+JOIN Person.PersonPhone
+ON Person.Person.BusinessEntityID=Person.PersonPhone.BusinessEntityID
+WHERE Person.PersonPhone.PhoneNumber LIKE '4%5'
+
+--Task 2
+
+SELECT  HumanResoueses.Employee.FirstName, HumanResoueses.Employee..LastName,
+CASE WHEN HumanResoueses.Employee.Age BETWEEN 17 AND 20 THEN 'Adolescence'
+	WHEN HumanResoueses.Employee. BETWEEN 21 AND 59 THEN 'Adults'
+	WHEN HumanResoueses.Employee. BETWEEN 60 AND 75 THEN 'Elderly'
+	WHEN HumanResoueses.Employee. BETWEEN 76 AND 90 THEN 'Senile'
+	ELSE 'No Category'
+
+
+
+--Task 3
+
+SELECT Name, StandardCost
+FROM
+(
+SELECT Name, StandardCost, Color, MAX(StandardCost) OVER (PARTITION BY Color)  as max_cost
+FROM Production.Product
+) Color_max_cost
+WHERE StandardCost=max_cost
+
+SELECT *
+FROM Production.Product
+
+--Task 4
+
+Медицинская лаборатория
+
+1. Договор (ID_dogovor,
+	    ID_sotrudnik
+	    Data_dogovora,
+            Data_okonchaniya_dogovora,
+            ID_Client,
+	    ID_issledovanie)
+
+2.Сотрудники (ID_sotrudnic,
+              FIO,
+              Dolzhnost')
+
+3. Образование (ID_sotrudnic,
+                Obrazovanie)
+
+4. Клиент (ID_Client,
+           FIO,
+           Telephon,
+           Address,
+           E-mail,
+           ID_issledovanie)
+
+5. Исследование (ID_analysis,
+                 Name_analysis,
+                 ID-sotrudnik,
+                 ID_laboratory)
+
+
+6. Лаборатория (ID_laboratory,
+                Address,
+                ID_analysis)
+
+1. В каких лабораториях делают определенное исследование
+
+
+
+
+
