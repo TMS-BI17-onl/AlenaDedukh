@@ -8,12 +8,13 @@ WHERE Person.PersonPhone.PhoneNumber LIKE '4%5'
 
 --Task 2
 
-SELECT  HumanResoueses.Employee.FirstName, HumanResoueses.Employee..LastName,
-CASE WHEN HumanResoueses.Employee.Age BETWEEN 17 AND 20 THEN 'Adolescence'
-	WHEN HumanResoueses.Employee. BETWEEN 21 AND 59 THEN 'Adults'
-	WHEN HumanResoueses.Employee. BETWEEN 60 AND 75 THEN 'Elderly'
-	WHEN HumanResoueses.Employee. BETWEEN 76 AND 90 THEN 'Senile'
-	ELSE 'No Category'
+SELECT  HumanResoueses.Employee.FirstName, HumanResoueses.Employee.LastName,
+CASE WHEN     BETWEEN 17 AND 20 THEN 'Adolescence'
+	      BETWEEN 21 AND 59 THEN 'Adults'
+	      BETWEEN 60 AND 75 THEN 'Elderly'
+	      BETWEEN 76 AND 90 THEN 'Senile'
+	      ELSE 'No Category'
+посчитать возраст сегодня отнять дату рождения - это будет в Case
 
 
 
@@ -35,37 +36,42 @@ FROM Production.Product
 Медицинская лаборатория
 
 1. Договор (ID_dogovor,
-	    ID_sotrudnik
+	    ID_sotrudnik,
 	    Data_dogovora,
             Data_okonchaniya_dogovora,
             ID_Client,
 	    ID_issledovanie)
 
-2.Сотрудники (ID_sotrudnic,
+2. Оплата (ID-dogovor, 
+           Sposob_oplati)
+
+3.Сотрудники (ID_sotrudnic,
               FIO,
               Dolzhnost')
 
-3. Образование (ID_sotrudnic,
+4. Образование (ID_sotrudnic,
                 Obrazovanie)
 
-4. Клиент (ID_Client,
+5. Клиент (ID_Client,
            FIO,
            Telephon,
            Address,
            E-mail,
            ID_issledovanie)
 
-5. Исследование (ID_analysis,
+6. Исследование (ID_analysis,
                  Name_analysis,
                  ID-sotrudnik,
-                 ID_laboratory)
+                 ID_laboratory,
+                 Stoimost')
 
 
-6. Лаборатория (ID_laboratory,
+7. Лаборатория (ID_laboratory,
                 Address,
                 ID_analysis)
 
-1. В каких лабораториях делают определенное исследование
+- Вывести ФИО клиентов, которые выполнили определенное исследование за 2023 год.
+- Найти адресс лаборатории, в которой выполняется определенное исследование.
 
 
 
