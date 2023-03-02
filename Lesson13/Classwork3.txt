@@ -1,0 +1,34 @@
+Task 1
+
+INSERT INTO Manufacturer (ID, Name,Country_ID)  --if ID not IDENTITY
+VALUES (5, 'HP', 4)
+
+Task 2
+
+UPDATE User
+SET Age=Age/3
+WHERE name='Андрей'
+
+Task 3
+3.1
+SELECT Name, Price
+FROM Product
+WHERE Price=(SELECT MAX(Price)
+             FROM Product)
+
+3.2
+SELECT Name, Price
+FROM (Select Name, Price, MAX(Price) OVER () AS Max_price
+      FROM Product)
+WHERE Price=Max_price
+
+4. SELECT Name, Phone
+FROM user U
+JOIN Phone P ON U.id=P.user_id
+WHERE Phone  like '3%4' OR age > 35
+
+5. SELECT TOP 5   Name
+FROM (SELECT u.Name, p.Count DENSE_RUNK () OVER (ORDER BY P.Count) DESK) as RNK
+Order o JOIN User U ON O.User_ID=U.ID
+JOIN Product ON o.Product_ID=p.ID
+
