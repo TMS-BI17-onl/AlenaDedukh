@@ -32,3 +32,4 @@ FROM (SELECT u.Name, p.Count DENSE_RUNK () OVER (ORDER BY P.Count) DESK) as RNK
 Order o JOIN User U ON O.User_ID=U.ID
 JOIN Product ON o.Product_ID=p.ID
 
+Mark: 8
