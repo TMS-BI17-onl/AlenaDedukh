@@ -61,4 +61,4 @@ Task 5
 
 SELECT *
 FROM Users
-WHERE email ='alex@gmail.com' and 
+WHERE email ='alex@gmail.com' and is_read = 'false'
