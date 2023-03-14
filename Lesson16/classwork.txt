@@ -1,0 +1,64 @@
+Task 1
+
+SELECT ProductSubcategoryID, MIN (Weight) as min_weight
+FROM Production.Product
+GROUP BY ProductSubcategoryID 
+HAVING MIN (Weight)>150
+
+Task 2
+
+1 variant 
+
+SELECT TOP 1 WITH TIES Name, StandardCost
+FROM Production.Product
+ORDER BY StandardCost DESC
+
+2 variant 
+
+SELECT Name, StandardCost
+FROM Production.Product
+WHERE StandardCost = (SELECT MAX(StandardCost) 
+		      FROM Production.Product)
+
+3 variant 
+
+SELECT Name, StandardCost
+FROM
+(SELECT Name, StandardCost, MAX(StandardCost) OVER ()  as max_cost
+FROM Production.Product) t
+WHERE StandardCost=max_cost
+
+4 variant ( This variant I forgot a bit and looked in the notes)
+
+SELECT Name, StandardCost
+FROM
+(
+SELECT Name, StandardCost, RANK() OVER (ORDER BY StandardCost DESC) as rnk
+FROM Production.Product
+) temp
+WHERE rnk=1
+
+Task 3
+
+SELECT Name
+FROM 
+(SELECT IDCustomers
+FROM FctOrders 
+WHERE Rent_Date > DATEADD (YEAR, -1, GETDATE()) O RIGHT JOIN DimCustomers C
+ON O.IDCustomers=C.IDCustomers
+WHERE IDCustomers IS NULL
+
+Task 4
+
+SELECT FullName,  COALESCE(COUNT(MaintenanceID) as cnt
+FROM FctMaintenance M RIGHT JOIN DimEmployee  E
+ON M.EmployeeNumber=E.EmployeeNumber
+WHERE DATEDIFF (YEAR, Getdate(), M.Startdate<=5)
+GROUP BY FullName
+
+
+Task 5
+
+SELECT *
+FROM Users
+WHERE email ='alex@gmail.com' and 
